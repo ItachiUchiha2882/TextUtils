@@ -19,7 +19,7 @@ export default function Textform(props) {
 	}
 	const handleCopy = () => {
 		navigator.clipboard.writeText(text);
-	} 
+	}
 
 	// // another function to copy text.
 	// const handleCopy = () => {
@@ -29,7 +29,7 @@ export default function Textform(props) {
 	// } 
 
 	const handleExtraSpaces = () => {
-		let newText = text.replace(/\s+/g,' ').trim(); 
+		let newText = text.replace(/\s+/g, ' ').trim();
 		setText(newText);
 	}
 
@@ -61,12 +61,19 @@ export default function Textform(props) {
 		document.getElementById('preview').innerHTML = text;
 	}
 
+	// note that we can make style objects like this and can use them but we can also directly write object inside style like i did in following code.
+	const textareaStyle = {
+		backgroundColor: props.mode === 'light' ? 'white' : '#282c33',
+		// color : `${props.mode==='light'?'black':'white'}`  // this also works.
+		color: props.mode === 'light' ? 'black' : 'white'
+	};
+
 	return (
 		<>
-			<div className="container my-3">
+			<div className="container my-3" style={{ color: props.mode === 'light' ? 'black' : 'white' }}>
 				<h2>{props.heading}</h2>
 				<div className="mb-3">
-					<textarea className="form-control" id="exampleFormControlTextarea1" rows="8" value={text} onChange={handleOnChange}></textarea>
+					<textarea className="form-control" style={textareaStyle} id="exampleFormControlTextarea1" rows="8" value={text} onChange={handleOnChange}></textarea>
 				</div>
 				<button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to uppercase</button>
 				<button className="btn btn-primary mx-1" onClick={handleLowClick}>Convert to lowercase</button>
@@ -74,7 +81,7 @@ export default function Textform(props) {
 				<button className="btn btn-primary mx-1" onClick={handleExtraSpaces}>Remove extra spaces</button>
 				<button className="btn btn-danger mx-1" onClick={handleClear}>Clear</button>
 			</div>
-			<div className="container">
+			<div className="container" style={{ color: props.mode === 'light' ? 'black' : 'white' }}>
 				<h3>Your text summary</h3>
 				<p><strong>{words}</strong> words and <strong>{text.length}</strong> characters</p>
 				<p>{timeToRead} minutes to read</p>
@@ -85,7 +92,7 @@ export default function Textform(props) {
 				with
 				<input type="text" name="text2" id="text2" className="mx-3"/>
 			</div> */}
-			<div className="container">
+			<div className="container" style={{ color: props.mode === 'light' ? 'black' : 'white' }}>
 				<button className="btn btn-primary mx-1" onClick={handlePreview}>Preview</button>
 				<p id="preview" className="container my-3"></p>
 			</div>
