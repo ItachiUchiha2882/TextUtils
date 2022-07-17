@@ -7,6 +7,7 @@ export default function Textform(props) {
 	// text = "new text";  // wrong way to change the state.
 	// setText("hello");   // correct way to change the state.
 
+	// function for 'convert to uppercase' button
 	const handleUpClick = () => {
 		// console.log("Uppercase clicked: " + text);
 		// setText("You have clicked on uppercase button");
@@ -14,12 +15,14 @@ export default function Textform(props) {
 		setText(newText);
 		props.showAlert('success', 'Converted to uppercase.');
 	}
+	// function for 'convert to lowercase' button
 	const handleLowClick = () => {
 		let newText = text.toLowerCase();
 		setText(newText);
 		props.showAlert('success', 'Converted to lowercase.');
 
 	}
+	// function for 'copy' button
 	const handleCopy = () => {
 		navigator.clipboard.writeText(text);
 		props.showAlert('success', 'Copied to clipboard.');
@@ -32,6 +35,7 @@ export default function Textform(props) {
 	// 	navigator.clipboard.writeText(txt.value);
 	// } 
 
+	// function for 'remove extra spaces' button'
 	const handleExtraSpaces = () => {
 		let newText = text.replace(/\s+/g, ' ').trim();
 		setText(newText);
@@ -44,6 +48,7 @@ export default function Textform(props) {
 	// 	setText(newText.join(" "));
 	// }
 
+	// function for 'clear' button
 	const handleClear = () => {
 		let newText = "";
 		setText(newText);
@@ -68,6 +73,7 @@ export default function Textform(props) {
 	}
 
 	// note that we can make style objects like this and can use them but we can also directly write object inside style like i did in following code.
+	// CSS object for style of <textarea>
 	const textareaStyle = {
 		backgroundColor: props.mode === 'light' ? 'white' : '#282c33',
 		// color : `${props.mode==='light'?'black':'white'}`  // this also works.

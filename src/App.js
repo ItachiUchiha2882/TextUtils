@@ -9,14 +9,17 @@ import Alert from "./components/Alert";
 function App() {
   const [mode, setMode] = useState('light');
 
+  // here we made an 'alert' variable as an object and set its value to 'null'.
   const [alert, setAlert] = useState(null);
 
-  const showAlert = (type, message) => { 
-    //note that here types are added according to bootstarp.
+  // in showAlert, we pass type and message as arguments and they will be used by 'setAlert' function to update 'alert' object.
+  const showAlert = (type, message) => {
+    // note that here type is added according to bootstarp alert types.
     setAlert({
-      type : type,    
-      msg : message
+      type: type,
+      msg: message
     });
+    // set a timeout to auto dismiss an alert message.
     setTimeout(() => {
       setAlert(null);
     }, 1500);
@@ -41,7 +44,7 @@ function App() {
       {/* <Navbar/> */}
       <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
       <Alert alert={alert} />
-      <Textform heading="Enter your text below" mode={mode} showAlert={showAlert}/>
+      <Textform heading="Enter your text below" mode={mode} showAlert={showAlert} />
       {/* <About heading="About us" /> */}
     </>
   );
