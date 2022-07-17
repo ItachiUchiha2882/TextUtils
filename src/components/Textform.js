@@ -12,13 +12,17 @@ export default function Textform(props) {
 		// setText("You have clicked on uppercase button");
 		let newText = text.toUpperCase();
 		setText(newText);
+		props.showAlert('success', 'Converted to uppercase.');
 	}
 	const handleLowClick = () => {
 		let newText = text.toLowerCase();
 		setText(newText);
+		props.showAlert('success', 'Converted to lowercase.');
+
 	}
 	const handleCopy = () => {
 		navigator.clipboard.writeText(text);
+		props.showAlert('success', 'Copied to clipboard.');
 	}
 
 	// // another function to copy text.
@@ -31,6 +35,7 @@ export default function Textform(props) {
 	const handleExtraSpaces = () => {
 		let newText = text.replace(/\s+/g, ' ').trim();
 		setText(newText);
+		props.showAlert('success', 'Removed extra spaces.');
 	}
 
 	// // another function to remove extra spaces in text.
@@ -42,6 +47,7 @@ export default function Textform(props) {
 	const handleClear = () => {
 		let newText = "";
 		setText(newText);
+		props.showAlert('danger', 'Text cleared.');
 	}
 
 	const handleOnChange = (event) => {
