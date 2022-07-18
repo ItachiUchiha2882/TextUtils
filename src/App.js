@@ -31,11 +31,14 @@ function App() {
       setMode('dark');
       document.body.style.backgroundColor = '#002547';
       showAlert('success', 'Dark mode enabled.')
+      // changing title dynamically.
+      document.title = 'TextUtils | Dark mode';
     }
     else {
       setMode('light');
       document.body.style.backgroundColor = 'white';
       showAlert('success', 'Light mode enabled.')
+      document.title = 'TextUtils | Light mode';
     }
   }
   return (
