@@ -1,12 +1,18 @@
 // import logo from "./logo.svg";
 import "./App.css";
-// import About from "./components/About";
-import Textform from "./components/Textform";
-import Navbar from "./components/Navbar";
 import React, { useState } from 'react';
+import Navbar from "./components/Navbar";
 import Alert from "./components/Alert";
+import Textform from "./components/Textform";
+import About from "./components/About";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Routes
+} from "react-router-dom";
 
-function App() {
+export default function App() {
   const [mode, setMode] = useState('light');
 
   // here we made an 'alert' variable as an object and set its value to 'null'.
@@ -43,14 +49,15 @@ function App() {
   }
   return (
     <>
-      {/* <Navbar title="TextUtils" aboutText="About Textutils" /> */}
-      {/* <Navbar/> */}
-      <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
-      <Alert alert={alert} />
-      <Textform heading="Enter your text below" mode={mode} showAlert={showAlert} />
-      {/* <About heading="About us" /> */}
+      <Router>
+        <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
+        <Alert alert={alert} />
+        {/* Note that their is some difference in v5 and v6, switch is not used anymore. */}
+        <Routes>
+          <Route exact path="/about" element={<About heading="About us" />} />
+          <Route exact path="/" element={<Textform heading="Enter your text below" mode={mode} showAlert={showAlert} />} />
+        </Routes>
+      </Router>
     </>
   );
 }
-
-export default App;
