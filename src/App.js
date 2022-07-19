@@ -1,4 +1,3 @@
-// import logo from "./logo.svg";
 import "./App.css";
 import React, { useState } from 'react';
 import Navbar from "./components/Navbar";
@@ -8,7 +7,7 @@ import About from "./components/About";
 import {
   BrowserRouter as Router,
   Route,
-  Link,
+  // Link,
   Routes
 } from "react-router-dom";
 
@@ -31,20 +30,17 @@ export default function App() {
     }, 1500);
   }
 
-  //  `toggleMode` is made to to use button toggling.
+  // `toggleMode` is made to to use button toggling.
   const toggleMode = () => {
     if (mode === 'light') {
       setMode('dark');
       document.body.style.backgroundColor = '#002547';
       showAlert('success', 'Dark mode enabled.')
-      // changing title dynamically.
-      document.title = 'TextUtils | Dark mode';
     }
     else {
       setMode('light');
       document.body.style.backgroundColor = 'white';
       showAlert('success', 'Light mode enabled.')
-      document.title = 'TextUtils | Light mode';
     }
   }
   return (
@@ -52,10 +48,9 @@ export default function App() {
       <Router>
         <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} />
-        {/* Note that their is some difference in v5 and v6, switch is not used anymore. */}
         <Routes>
-          <Route exact path="/about" element={<About heading="About us" />} />
-          <Route exact path="/" element={<Textform heading="Enter your text below" mode={mode} showAlert={showAlert} />} />
+          <Route exact path="/about" element={<About heading="About us" mode={mode} />} />
+          <Route exact path="/" element={<Textform heading="Try TextUtils - Word counter, Character counter, Remove extra spaces" mode={mode} showAlert={showAlert} />} />
         </Routes>
       </Router>
     </>

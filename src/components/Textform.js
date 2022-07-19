@@ -1,16 +1,11 @@
 import React, { useState } from "react";
-// import PropTypes from 'prop-types'
 
 export default function Textform(props) {
 	// Declare a new state variable, which we'll call "count"
 	const [text, setText] = useState('');
-	// text = "new text";  // wrong way to change the state.
-	// setText("hello");   // correct way to change the state.
 
 	// function for 'convert to uppercase' button
 	const handleUpClick = () => {
-		// console.log("Uppercase clicked: " + text);
-		// setText("You have clicked on uppercase button");
 		let newText = text.toUpperCase();
 		setText(newText);
 		props.showAlert('success', 'Converted to uppercase.');
@@ -33,6 +28,7 @@ export default function Textform(props) {
 	// 	let txt = document.getElementById('exampleFormControlTextarea1');
 	// 	txt.select();
 	// 	navigator.clipboard.writeText(txt.value);
+	// 	document.getSelection().removeAllRanges();
 	// } 
 
 	// function for 'remove extra spaces' button'
@@ -61,6 +57,7 @@ export default function Textform(props) {
 	}
 
 	// let words = text.trim().split(" ").length;
+	// let words = text.split(" ").filter((element) => {return element.length!==0}).length;
 	let words = text.trim().split(/\s+/).length;
 	if (text.trim() === "") {	// for words to be 0 at starting for exta whitespaces.
 		words = 0;
@@ -72,7 +69,6 @@ export default function Textform(props) {
 		document.getElementById('preview').innerHTML = text;
 	}
 
-	// note that we can make style objects like this and can use them but we can also directly write object inside style like i did in following code.
 	// CSS object for style of <textarea>
 	const textareaStyle = {
 		backgroundColor: props.mode === 'light' ? 'white' : '#282c33',
@@ -83,29 +79,23 @@ export default function Textform(props) {
 	return (
 		<>
 			<div className="container my-3" style={{ color: props.mode === 'light' ? 'black' : 'white' }}>
-				<h2>{props.heading}</h2>
+				<h2 className="mb-3">{props.heading}</h2>
 				<div className="mb-3">
 					<textarea className="form-control" style={textareaStyle} id="exampleFormControlTextarea1" rows="8" value={text} onChange={handleOnChange}></textarea>
 				</div>
-				<button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to uppercase</button>
-				<button className="btn btn-primary mx-1" onClick={handleLowClick}>Convert to lowercase</button>
-				<button className="btn btn-primary mx-1" onClick={handleCopy}>Copy</button>
-				<button className="btn btn-primary mx-1" onClick={handleExtraSpaces}>Remove extra spaces</button>
-				<button className="btn btn-danger mx-1" onClick={handleClear}>Clear</button>
+				<button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>Convert to uppercase</button>
+				<button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleLowClick}>Convert to lowercase</button>
+				<button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleCopy}>Copy</button>
+				<button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleExtraSpaces}>Remove extra spaces</button>
+				<button disabled={text.length===0} className="btn btn-danger mx-1 my-1" onClick={handleClear}>Clear</button>
 			</div>
 			<div className="container" style={{ color: props.mode === 'light' ? 'black' : 'white' }}>
 				<h3>Your text summary</h3>
 				<p><strong>{words}</strong> words and <strong>{text.length}</strong> characters</p>
-				<p>{timeToRead} minutes to read</p>
+				<p>{timeToRead} minutes read</p>
 			</div>
-			{/* <div className="container my-2">
-				<button className="btn btn-primary mx-1" onClick={handleLowClick}>Replace</button>
-				<input type="text" name="text1" id="text1" className="mx-3"/>
-				with
-				<input type="text" name="text2" id="text2" className="mx-3"/>
-			</div> */}
 			<div className="container" style={{ color: props.mode === 'light' ? 'black' : 'white' }}>
-				<button className="btn btn-primary mx-1" onClick={handlePreview}>Preview</button>
+				<button disabled={text.length===0} className="btn btn-primary mx-1" onClick={handlePreview}>Preview</button>
 				<p id="preview" className="container my-3"></p>
 			</div>
 		</>
