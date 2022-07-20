@@ -30,17 +30,31 @@ export default function App() {
     }, 1500);
   }
 
+  const removeClasses = () => {
+    document.body.classList.remove('bg-primary');
+    document.body.classList.remove('bg-secondary');
+    document.body.classList.remove('bg-success');
+    document.body.classList.remove('bg-danger');
+    document.body.classList.remove('bg-warning');
+    document.body.classList.remove('bg-info');
+    document.body.classList.remove('bg-light');
+    document.body.classList.remove('bg-dark');
+  }
+
   // `toggleMode` is made to to use for toggling modes.
-  const toggleMode = () => {
+  const toggleMode = (cls) => {
+    removeClasses();
+    console.log(cls); 
+    document.body.classList.add('bg-' + cls);
     if (mode === 'light') {
       setMode('dark');
       document.body.style.backgroundColor = '#002547';
-      showAlert('success', 'Dark mode enabled.')
+      // showAlert('success', 'Dark mode enabled.')
     }
     else {
       setMode('light');
       document.body.style.backgroundColor = 'white';
-      showAlert('success', 'Light mode enabled.')
+      // showAlert('success', 'Light mode enabled.')
     }
   }
 
