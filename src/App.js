@@ -30,7 +30,7 @@ export default function App() {
     }, 1500);
   }
 
-  // `toggleMode` is made to to use button toggling.
+  // `toggleMode` is made to to use for toggling modes.
   const toggleMode = () => {
     if (mode === 'light') {
       setMode('dark');
@@ -43,14 +43,6 @@ export default function App() {
       showAlert('success', 'Light mode enabled.')
     }
   }
-
- 
-
-  // const selectTab = () => {
-  //   console.log(tab);
-  //   // setTab(tb);
-  //   // if()
-  // }
 
   return (
     <>

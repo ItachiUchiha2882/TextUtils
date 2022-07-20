@@ -2,22 +2,15 @@ import React from 'react'
 
 export default function About(props) {
 	const myStyle = {
-		// backgroundColor: props.mode === 'light' ? 'white' : '#282c33',
-		backgroundColor: props.mode === 'light' ? 'white' : 'rgb(31 75 151)', 
+		backgroundColor: props.mode === 'light' ? 'white' : 'rgb(8 74 190)',
 		color: props.mode === 'light' ? 'black' : 'white'
 	};
 
-	const blackBtn = {
+	// CSS for accordion button arrows.
+	const btnStyle = {
 		__html: [
 			'.accordion-button:after {',
-			'  filter: invert(1)',
-			'}'
-		].join('\n')
-	}
-	const whiteBtn = {
-		__html: [
-			'.accordion-button:after {',
-			'  filter: invert(0)',
+			`  filter: ${props.mode === 'light' ? 'invert(1)' : 'invert(0)'}`,
 			'}'
 		].join('\n')
 	}
@@ -27,8 +20,8 @@ export default function About(props) {
 			<div className='container my-3'>
 				<h2 style={{ color: props.mode === 'light' ? 'black' : 'white' }}>{props.heading}</h2>
 				<div className="accordion" id="accordionExample">
-				{/* style for accordion-button arrows */}
-				<style dangerouslySetInnerHTML={props.mode === 'light' ? blackBtn : whiteBtn}></style>
+					{/* style for accordion-button arrows */}
+					<style dangerouslySetInnerHTML={btnStyle}></style>
 					<div className="accordion-item">
 						<h2 className="accordion-header" id="headingOne">
 							<button className="accordion-button" style={myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -56,7 +49,7 @@ export default function About(props) {
 					<div className="accordion-item">
 						<h2 className="accordion-header" id="headingThree">
 							<button className="accordion-button collapsed" style={myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-								<strong>Browser Compatible</strong>	
+								<strong>Browser Compatible</strong>
 							</button>
 						</h2>
 						<div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
