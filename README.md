@@ -1,3 +1,25 @@
+# TextUtils 📝
+
+**Date:**  20/07/2022
+
+This includes [CWH ReactJS tutorials](https://www.youtube.com/playlist?list=PLu0W_9lII9agx66oZnT6IyhcMIbUMNMdt) from tut1 to tut21. Started on 11 july, 2022 and finished on 20 july, 2022.
+
+View deployment [here](https://leviackerman2882.github.io/TextUtils/). Note that this deployement won't contain `About` page as gitHub pages doesn’t support routers that use the HTML5 `pushState` history API under the hood (for example, React Router using `browserHistory`).
+
+Access github repo [here](https://github.com/LeviAckerman2882/TextUtils) by [@LeviAckerman2882](https://github.com/LeviAckerman2882).
+
+## Extra  : Fixing issues and features to add-on
+
+- Issue after reloading, only title and active class changes not content of page.
+
+- Can change title to `TextTime` or `TextFlex`.
+
+- Can add footer and logo.
+
+- Can add extra features like replacing words etc. 😊
+
+...
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
