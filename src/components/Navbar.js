@@ -28,20 +28,10 @@ export default function Navbar(props) {
               <Link className={`nav-link ${tab === 'about' ? 'active' : ''}`} onClick={() => { setTab('about') }} to="/about">{props.aboutText}</Link>
             </li>
           </ul>
-          <div>
-            <button type="button" onClick={()=> props.toggleMode('primary')} className="btn mx-1 btn-primary">&nbsp;</button>
-            <button type="button" onClick={()=> props.toggleMode('secondary')} className="btn mx-1 btn-secondary">&nbsp;</button>
-            <button type="button" onClick={()=> props.toggleMode('success')} className="btn mx-1 btn-success">&nbsp;</button>
-            <button type="button" onClick={()=> props.toggleMode('danger')} className="btn mx-1 btn-danger">&nbsp;</button>
-            <button type="button" onClick={()=> props.toggleMode('warning')} className="btn mx-1 btn-warning">&nbsp;</button>
-            <button type="button" onClick={()=> props.toggleMode('info')} className="btn mx-1 btn-info">&nbsp;</button>
-            <button type="button" onClick={()=> props.toggleMode('light')} className="btn mx-1 btn-light">&nbsp;</button>
-            <button type="button" onClick={()=> props.toggleMode('dark')} className="btn mx-1 btn-dark">&nbsp;</button>
-          </div>
-          {/* <div className={`form-check form-switch text-${props.mode === 'light' ? 'dark' : 'light'}`}>
+          <div className={`form-check form-switch text-${props.mode === 'light' ? 'dark' : 'light'}`}>
             <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable Dark Mode</label>
-          </div> */}
+          </div>
         </div>
 
       </div>
