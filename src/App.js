@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 import Navbar from "./components/Navbar";
 import Alert from "./components/Alert";
 import Textform from "./components/Textform";
-// import About from "./components/About";
-// import {
-//   BrowserRouter as Router,
-//   Route,
-//   // Link,
-//   Routes
-// } from "react-router-dom";
+import About from "./components/About";
+import {
+  BrowserRouter as Router,
+  Route,
+  // Link,
+  Routes
+} from "react-router-dom";
 
 export default function App() {
   const [mode, setMode] = useState('light');
@@ -46,15 +46,14 @@ export default function App() {
 
   return (
     <>
-      {/* <Router> */}
+      <Router>
         <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} />
-        {/* <Routes> */}
-          {/* <Route exact path="/about" element={<About heading="About us" mode={mode} />} /> */}
-          {/* <Route exact path="/" element={<Textform heading="Try TextUtils - Word counter, Character counter, Remove extra spaces" mode={mode} showAlert={showAlert} />} /> */}
-        <Textform heading="Try TextUtils - Word counter, Character counter, Remove extra spaces" mode={mode} showAlert={showAlert} />
-        {/* </Routes> */}
-      {/* </Router> */}
+        <Routes>
+          <Route exact path="/about" element={<About heading="About us" mode={mode} />} />
+          <Route exact path="/" element={<Textform heading="Try TextUtils - Word counter, Character counter, Remove extra spaces" mode={mode} showAlert={showAlert} />} />
+        </Routes>
+      </Router>
     </>
   );
 }
