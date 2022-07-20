@@ -7,12 +7,28 @@ export default function About(props) {
 		color: props.mode === 'light' ? 'black' : 'white'
 	};
 
+	const blackBtn = {
+		__html: [
+			'.accordion-button:after {',
+			'  filter: invert(1)',
+			'}'
+		].join('\n')
+	}
+	const whiteBtn = {
+		__html: [
+			'.accordion-button:after {',
+			'  filter: invert(0)',
+			'}'
+		].join('\n')
+	}
 
 	return (
 		<>
 			<div className='container my-3'>
 				<h2 style={{ color: props.mode === 'light' ? 'black' : 'white' }}>{props.heading}</h2>
 				<div className="accordion" id="accordionExample">
+				{/* style for accordion-button arrows */}
+				<style dangerouslySetInnerHTML={props.mode === 'light' ? blackBtn : whiteBtn}></style>
 					<div className="accordion-item">
 						<h2 className="accordion-header" id="headingOne">
 							<button className="accordion-button" style={myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">

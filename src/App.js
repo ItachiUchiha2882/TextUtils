@@ -43,6 +43,15 @@ export default function App() {
       showAlert('success', 'Light mode enabled.')
     }
   }
+
+ 
+
+  // const selectTab = () => {
+  //   console.log(tab);
+  //   // setTab(tb);
+  //   // if()
+  // }
+
   return (
     <>
       <Router>
